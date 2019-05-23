@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">stark-krumm</string>
+    <string name="app_name">Stark &amp; Krumm</string>
+
+    <string-array name="car_numbers">
+        <item>SM-08-SNK</item>
+        <item>SM-09-SNK</item>
+        <item>SM-11-SNK</item>
+        <item>SM-12-SNK</item>
+        <item>SM-14-SNK</item>
+        <item>SM-15-SNK</item>
+        <item>SM-16-SNK</item>
+        <item>SM-17-SNK</item>
+        <item>SM-18-SNK</item>
+    </string-array>
+
+    <string-array name="driver_names">
+        <item>BalogI</item>
+        <item>KatoS</item>
+        <item>BorosZs</item>
+        <item>JuhaszP</item>
+        <item>DurkovicsA</item>
+        <item>TatarE ArdeleanS</item>
+        <item>MegyesanE NagyK</item>
+    </string-array>
 </resources>
