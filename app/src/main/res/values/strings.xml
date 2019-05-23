@@ -22,4 +22,19 @@
         <item>TatarE ArdeleanS</item>
         <item>MegyesanE NagyK</item>
     </string-array>
+
+    <string-array name="dates">
+        <item>2019-IAN</item>
+        <item>2019-FEB</item>
+        <item>2019-MAR</item>
+        <item>2019-APR</item>
+        <item>2019-MAI</item>
+        <item>2019-IUN</item>
+        <item>2019-IUL</item>
+        <item>2019-AUG</item>
+        <item>2019-SEP</item>
+        <item>2019-OCT</item>
+        <item>2019-NOI</item>
+        <item>2019-DEC</item>
+    </string-array>
 </resources>

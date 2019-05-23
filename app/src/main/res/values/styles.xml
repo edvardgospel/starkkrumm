@@ -8,4 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="My.Spinner.Style" parent="Base.Widget.AppCompat.Spinner.Underlined"></style>
+
 </resources>
