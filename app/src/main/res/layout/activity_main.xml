@@ -197,7 +197,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="64dp"
                 android:layout_marginEnd="8dp"
                 android:text="Google Drive"
                 android:textSize="28sp"
@@ -246,7 +246,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="64dp"
                 android:layout_marginEnd="8dp"
                 android:text="Ştergere"
                 android:textSize="28sp"
@@ -293,6 +293,175 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateDelete" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="32dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roadNumberDelete">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#f1f1f1">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Foaie"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Auto"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Nume"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Plec"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Sos"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Dist"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Cons"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Data"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="123456" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="13" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="TatarE ArdeleanS" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="01.20.00" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="02.22.00" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="1500" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="150.25" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="2019-MAI" />
+
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
