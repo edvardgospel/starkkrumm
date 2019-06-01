@@ -390,50 +390,57 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/nr_column_ro"
-                        android:textStyle="bold" />
+                        android:background="#ffffff"
+                        android:gravity="center" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/name_column_ro"
-                        android:textStyle="bold" />
+                        android:background="#ffffff"
+                        android:gravity="center" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/departure_ro"
-                        android:textStyle="bold" />
+                        android:background="#ffffff"
+                        android:gravity="center" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/arrival_ro"
-                        android:textStyle="bold" />
+                        android:background="#ffffff"
+                        android:gravity="center" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/distance_ro"
-                        android:textStyle="bold" />
+                        android:background="#ffffff"
+                        android:gravity="center" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/consumption_ro"
-                        android:textStyle="bold" />
+                        android:background="#ffffff"
+                        android:gravity="center" />
+
                 </TableRow>
             </TableLayout>
         </android.support.constraint.ConstraintLayout>
