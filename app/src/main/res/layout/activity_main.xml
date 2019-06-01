@@ -26,7 +26,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Stark and Krumm"
+                android:text="@string/stark_and_krumm"
                 android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +40,9 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Număr foaie"
+                android:hint="@string/road_number_ro"
                 android:imeOptions="actionDone"
+                android:importantForAutofill="no"
                 android:inputType="number"
                 android:nextFocusForward="@id/carNumber"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +83,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Plecare"
+                android:hint="@string/departure_ro"
+                android:importantForAutofill="no"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +98,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Sosire"
+                android:hint="@string/arrival_ro"
+                android:importantForAutofill="no"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +113,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="DistanţăMare"
+                android:hint="@string/distance_big_ro"
+                android:importantForAutofill="no"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +128,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="DistanţăMic"
+                android:hint="@string/distance_small_ro"
+                android:importantForAutofill="no"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +143,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Consum1"
+                android:hint="@string/consumption1_ro"
+                android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +158,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Consum2"
+                android:hint="@string/consumption2_ro"
+                android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,8 +173,9 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Consum3"
+                android:hint="@string/consumption3_ro"
                 android:imeOptions="actionDone"
+                android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -193,7 +201,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:onClick="submitButtonClicked"
-                android:text="Submitere"
+                android:text="@string/submit_ro"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/date" />
 
@@ -204,7 +212,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="64dp"
                 android:layout_marginEnd="8dp"
-                android:text="Ştergere"
+                android:text="@string/delete_ro"
                 android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -244,7 +252,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Număr foaie"
+                android:hint="@string/road_number_ro"
+                android:importantForAutofill="no"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -256,8 +265,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Ştergere"
                 android:onClick="deleteButtonClicked"
+                android:text="@string/delete_ro"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/roadNumberDelete" />
 
@@ -268,7 +277,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="64dp"
                 android:layout_marginEnd="8dp"
-                android:text="Google Drive"
+                android:text="@string/google_drive"
                 android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -307,146 +316,126 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:onClick="uploadButtonClicked"
-                android:text="Încărcare"
+                android:text="@string/upload_ro"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateDrive" />
 
-            <LinearLayout
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="32dp"
+                android:background="#f1f1f1"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/upload">
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#f1f1f1">
+                <TableRow>
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/nr_column_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Nr"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/name_column_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Nume"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/departure_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Plecare"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/arrival_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Sosire"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/distance_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Distanţă"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/consumption_ro"
+                        android:textStyle="bold" />
+                </TableRow>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Consum"
-                            android:textStyle="bold" />
+                <TableRow>
 
-                    </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/nr_column_ro"
+                        android:textStyle="bold" />
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/name_column_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="1dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="#ffffff"
-                            android:gravity="center"
-                            android:text="123456" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/departure_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="1dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="#ffffff"
-                            android:gravity="center"
-                            android:text="TatarE Ard.." />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/arrival_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="1dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="#ffffff"
-                            android:gravity="center"
-                            android:text="01.20.00" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/distance_ro"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="1dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="#ffffff"
-                            android:gravity="center"
-                            android:text="02.22.00" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="1dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="#ffffff"
-                            android:gravity="center"
-                            android:text="1500" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="1dp"
-                            android:layout_marginBottom="1dp"
-                            android:layout_weight="1"
-                            android:background="#ffffff"
-                            android:gravity="center"
-                            android:text="150.25" />
-
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/consumption_ro"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

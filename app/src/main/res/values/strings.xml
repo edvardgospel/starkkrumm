@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">Stark &amp; Krumm</string>
+    <string name="stark_and_krumm">Stark and Krumm</string>
+    <string name="google_drive">Google Drive</string>
+    <string name="road_number_ro">Număr foaie</string>
+    <string name="departure_ro">Plecare</string>
+    <string name="arrival_ro">Sosire</string>
+    <string name="distance_big_ro">DistanţăMare</string>
+    <string name="distance_small_ro">DistanţăMic</string>
+    <string name="consumption1_ro">Consum1</string>
+    <string name="consumption2_ro">Consum2</string>
+    <string name="consumption3_ro">Consum3</string>
+    <string name="submit_ro">Submitere</string>
+    <string name="delete_ro">Ştergere</string>
+    <string name="upload_ro">Încărcare</string>
+    <string name="nr_column_ro">Nr</string>
+    <string name="name_column_ro">Nume</string>
+    <string name="distance_ro">Dist</string>
+    <string name="consumption_ro">Cons</string>
+    <string name="url">https://192.168.0.75/starkkrumm</string>
 
     <string-array name="car_numbers">
         <item>SM-08-SNK</item>
