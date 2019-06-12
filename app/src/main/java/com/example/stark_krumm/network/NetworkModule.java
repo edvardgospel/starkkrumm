@@ -7,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkModule {
     public static Retrofit provideRetrofit() {
-        System.out.println("URL:" + NetworkConfig.URL);
         return new Retrofit.Builder()
                 .baseUrl(NetworkConfig.URL)
                 .addConverterFactory(GsonConverterFactory.create())
