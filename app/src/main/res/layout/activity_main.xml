@@ -206,6 +206,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/date" />
 
             <TextView
+                android:id="@+id/successSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="64dp"
+                android:text="@string/dot"
+                android:textSize="64sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/deleteLabel"
+                app:layout_constraintStart_toEndOf="@+id/submit"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+
+            <TextView
                 android:id="@+id/deleteLabel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -271,6 +285,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/roadNumberDelete" />
 
             <TextView
+                android:id="@+id/successDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="64dp"
+                android:text="@string/dot"
+                android:textSize="64sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/googleDrive"
+                app:layout_constraintStart_toEndOf="@+id/delete"
+                app:layout_constraintTop_toBottomOf="@+id/roadNumberDelete" />
+
+            <TextView
                 android:id="@+id/googleDrive"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -317,10 +345,26 @@
                 android:layout_marginTop="8dp"
                 android:onClick="uploadButtonClicked"
                 android:text="@string/upload_ro"
+                app:layout_constraintBottom_toTopOf="@+id/table"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateDrive" />
 
+            <TextView
+                android:id="@+id/successUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/dot"
+                android:textSize="64sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/table"
+                app:layout_constraintStart_toEndOf="@+id/upload"
+                app:layout_constraintTop_toBottomOf="@+id/dateDrive" />
+
             <TableLayout
+                android:id="@+id/table"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"

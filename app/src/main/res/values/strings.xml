@@ -18,6 +18,7 @@
     <string name="distance_ro">Dist</string>
     <string name="consumption_ro">Cons</string>
     <string name="url">https://192.168.0.75/starkkrumm</string>
+    <string name="dot">&#8226;</string>
 
     <string-array name="car_numbers">
         <item>SM-08-SNK</item>
