@@ -14,19 +14,19 @@ import retrofit2.http.Query;
 
 public interface RoadApi {
 
-    @GET("/road")
+    @GET("/starkkrumm/road")
     Call<List<RoadResponse>> getRoads(@Query("date") String date,
                                       @Query("carNumber") Integer carNumber);
 
-    @POST("/road")
+    @POST("/starkkrumm/road")
     Call<List<RoadResponse>> saveRoad(@Body RoadRequest roadRequest);
 
-    @DELETE("/road")
+    @DELETE("/starkkrumm/road")
     Call<List<RoadResponse>> deleteRoad(@Query("date") String date,
                                         @Query("carNumber") Integer carNumber,
                                         @Query("roadNumber") Integer roadNumber);
 
-    @POST("/drive/road")
+    @POST("/starkkrumm/drive/road")
     Call<List<RoadResponse>> uploadRoad(@Query("date") String date,
                                         @Query("carNumber") Integer carNumber);
 }
