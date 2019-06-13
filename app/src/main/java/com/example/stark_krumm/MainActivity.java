@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String RED = "#D8000C";
     public static final String GRAY = "#CCCCCC";
 
-    //// SUBMIT ////
     private RoadApi roadApi = NetworkModule.provideRoadApi(NetworkModule.provideRetrofit());
+
+    //// SUBMIT ////
     private EditText roadNumber;
     private Spinner carNumber;
     private Spinner driverName;
