@@ -89,9 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void submitButtonClicked(View view) {
         if (allDataAreFilled()) {
-            RoadRequest roadRequest = createRoadRequest();
-            System.out.println(roadRequest.toString());
-            roadApi.saveRoad(roadRequest).enqueue(getCallback(submitDot));
+            roadApi.saveRoad(createRoadRequest()).enqueue(getCallback(submitDot));
         } else {
             setVisibility(submitDot, ORANGE);
         }
