@@ -1,13 +1,21 @@
 package com.example.stark_krumm;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.stark_krumm.model.RoadRequest;
@@ -15,21 +23,27 @@ import com.example.stark_krumm.model.RoadResponse;
 import com.example.stark_krumm.network.NetworkModule;
 import com.example.stark_krumm.network.api.RoadApi;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static java.util.Arrays.stream;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String GREEN = "#4F8A10";
-    public static final String ORANGE = "#FFA500";
-    public static final String RED = "#D8000C";
-    public static final String GRAY = "#CCCCCC";
+    private static final String GREEN = "#4F8A10";
+    private static final String ORANGE = "#FFA500";
+    private static final String RED = "#D8000C";
+    private static final String GRAY = "#CCCCCC";
 
-    private RoadApi roadApi = NetworkModule.provideRoadApi(NetworkModule.provideRetrofit());
+    private static final RoadApi roadApi = NetworkModule.provideRoadApi(NetworkModule.provideRetrofit());
+
+    private Resources resources;
+    private int px;
 
     //// SUBMIT ////
     private EditText roadNumber;
@@ -58,10 +72,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView deleteDot;
     private TextView uploadDot;
 
+    //// TABLE ////
+    private TableLayout table;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        resources = this.getResources();
+        px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
 
         roadNumber = findViewById(R.id.roadNumber);
         carNumber = findViewById(R.id.carNumber);
@@ -85,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
         submitDot = findViewById(R.id.successSubmit);
         deleteDot = findViewById(R.id.successDelete);
         uploadDot = findViewById(R.id.successUpload);
+
+        table = findViewById(R.id.table);
+
+        driveSpinnersChangeListener();
     }
 
     public void submitButtonClicked(View view) {
@@ -181,6 +205,74 @@ public class MainActivity extends AppCompatActivity {
                 roadNumberDelete.getText().clear();
             }
         };
+    }
+
+    private void driveSpinnersChangeListener() {
+        spinnerChangeListener(dateDrive);
+        spinnerChangeListener(carNumberDrive);
+    }
+
+    private void spinnerChangeListener(Spinner spinner) {
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String date = dateDrive.getSelectedItem().toString();
+                Integer carNumber = Integer.valueOf(carNumberDrive.getSelectedItem().toString().substring(3, 5));
+                roadApi.getRoads(date, carNumber).enqueue(new Callback<List<RoadResponse>>() {
+                    @Override
+                    public void onResponse(@NonNull Call<List<RoadResponse>> call, @NonNull Response<List<RoadResponse>> response) {
+                        if (response.isSuccessful()) {
+                            System.out.println(response.body());
+                            assert response.body() != null;
+                            fillTable(response.body());
+                        } else {
+                            setVisibility(uploadDot, RED);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<List<RoadResponse>> call, @NonNull Throwable t) {
+                        setVisibility(uploadDot, GRAY);
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+
+        });
+    }
+
+    private void fillTable(List<RoadResponse> roads) {
+        TableRow row = new TableRow(this);
+        for (RoadResponse road : roads) {
+            List<TextView> textViews = createTextViews(road);
+            for (TextView textView : textViews) {
+                row.addView(textView);
+            }
+        }
+        table.addView(row);
+    }
+
+    private List<TextView> createTextViews(RoadResponse road) {
+        List<TextView> textViews = new ArrayList<>();
+        Field[] fields = road.getClass().getDeclaredFields();
+        LinearLayout.LayoutParams params = new TableRow.LayoutParams(WRAP_CONTENT, WRAP_CONTENT, 1);
+        params.setMargins(0, 0, px, px);
+        for (Field field : fields) {
+            TextView textView = new TextView(this);
+            textView.setLayoutParams(params);
+            textView.setBackgroundColor(Color.WHITE);
+            textView.setGravity(Gravity.CENTER);
+            try {
+                textView.setText(field.get(road).toString());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            textViews.add(textView);
+        }
+        return textViews;
     }
 
     private void setVisibility(TextView dot, String color) {
