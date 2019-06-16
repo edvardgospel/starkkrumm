@@ -1,5 +1,7 @@
 package com.example.stark_krumm.model;
 
+import android.support.annotation.NonNull;
+
 public class RoadResponse {
     private Integer roadNumber;
     private String driverName;
@@ -54,5 +56,17 @@ public class RoadResponse {
 
     public void setConsumption(Double consumption) {
         this.consumption = consumption;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "RoadRequest: [ roadNumber = " + this.roadNumber + ", " +
+                "driverName = " + this.driverName + ", " +
+                "departure = " + this.departure + ", " +
+                "arrival = " + this.arrival + ", " +
+                "distance = " + this.distance + ", " +
+                "consumption = " + this.consumption;
+
     }
 }

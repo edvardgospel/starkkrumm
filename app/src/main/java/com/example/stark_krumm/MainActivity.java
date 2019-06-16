@@ -1,5 +1,6 @@
 package com.example.stark_krumm;
 
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,7 +24,6 @@ import com.example.stark_krumm.model.RoadResponse;
 import com.example.stark_krumm.network.NetworkModule;
 import com.example.stark_krumm.network.api.RoadApi;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final RoadApi roadApi = NetworkModule.provideRoadApi(NetworkModule.provideRetrofit());
 
-    private Resources resources;
     private int px;
+    private int check;
 
     //// SUBMIT ////
     private EditText roadNumber;
@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resources = this.getResources();
+        Resources resources = this.getResources();
         px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, resources.getDisplayMetrics());
-
+        check = 0;
         roadNumber = findViewById(R.id.roadNumber);
         carNumber = findViewById(R.id.carNumber);
         driverName = findViewById(R.id.driverName);
@@ -182,6 +182,14 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<List<RoadResponse>> call, @NonNull Response<List<RoadResponse>> response) {
                 if (response.isSuccessful()) {
                     setVisibility(dot, GREEN);
+                    if (carNumber.getSelectedItem().equals(carNumberDrive.getSelectedItem()) &&
+                            date.getSelectedItem().equals(dateDrive.getSelectedItem())) {
+                        clearPreviousDataFromTable();
+                        assert response.body() != null;
+                        if (!response.body().isEmpty()) {
+                            fillTable(response.body());
+                        }
+                    }
                     clearInputTexts();
                 } else {
                     setVisibility(dot, RED);
@@ -216,25 +224,30 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String date = dateDrive.getSelectedItem().toString();
-                Integer carNumber = Integer.valueOf(carNumberDrive.getSelectedItem().toString().substring(3, 5));
-                roadApi.getRoads(date, carNumber).enqueue(new Callback<List<RoadResponse>>() {
-                    @Override
-                    public void onResponse(@NonNull Call<List<RoadResponse>> call, @NonNull Response<List<RoadResponse>> response) {
-                        if (response.isSuccessful()) {
-                            System.out.println(response.body());
-                            assert response.body() != null;
-                            fillTable(response.body());
-                        } else {
-                            setVisibility(uploadDot, RED);
+                if (check++ > 0) {
+                    String date = dateDrive.getSelectedItem().toString();
+                    Integer carNumber = Integer.valueOf(carNumberDrive.getSelectedItem().toString().substring(3, 5));
+                    roadApi.getRoads(date, carNumber).enqueue(new Callback<List<RoadResponse>>() {
+                        @Override
+                        public void onResponse(@NonNull Call<List<RoadResponse>> call, @NonNull Response<List<RoadResponse>> response) {
+                            if (response.isSuccessful()) {
+                                assert response.body() != null;
+                                clearPreviousDataFromTable();
+                                if (!response.body().isEmpty()) {
+                                    fillTable(response.body());
+                                }
+                            } else {
+                                setVisibility(uploadDot, RED);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(@NonNull Call<List<RoadResponse>> call, @NonNull Throwable t) {
-                        setVisibility(uploadDot, GRAY);
-                    }
-                });
+                        @Override
+                        public void onFailure(@NonNull Call<List<RoadResponse>> call, @NonNull Throwable t) {
+                            setVisibility(uploadDot, GRAY);
+                        }
+                    });
+                }
+
             }
 
             @Override
@@ -244,34 +257,75 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void clearPreviousDataFromTable() {
+        while (table.getChildCount() > 1) {
+            table.removeView(table.getChildAt(table.getChildCount() - 1));
+        }
+    }
+
     private void fillTable(List<RoadResponse> roads) {
-        TableRow row = new TableRow(this);
         for (RoadResponse road : roads) {
+            TableRow row = new TableRow(this);
             List<TextView> textViews = createTextViews(road);
             for (TextView textView : textViews) {
                 row.addView(textView);
             }
+            table.addView(row);
         }
-        table.addView(row);
     }
 
+    @SuppressLint("SetTextI18n")
     private List<TextView> createTextViews(RoadResponse road) {
         List<TextView> textViews = new ArrayList<>();
-        Field[] fields = road.getClass().getDeclaredFields();
         LinearLayout.LayoutParams params = new TableRow.LayoutParams(WRAP_CONTENT, WRAP_CONTENT, 1);
         params.setMargins(0, 0, px, px);
-        for (Field field : fields) {
-            TextView textView = new TextView(this);
-            textView.setLayoutParams(params);
-            textView.setBackgroundColor(Color.WHITE);
-            textView.setGravity(Gravity.CENTER);
-            try {
-                textView.setText(field.get(road).toString());
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-            textViews.add(textView);
+
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(params);
+        textView.setBackgroundColor(Color.WHITE);
+        textView.setGravity(Gravity.CENTER);
+        textView.setText(road.getRoadNumber().toString());
+        textViews.add(textView);
+
+        TextView textView1 = new TextView(this);
+        textView1.setLayoutParams(params);
+        textView1.setBackgroundColor(Color.WHITE);
+        textView1.setGravity(Gravity.CENTER);
+        if (road.getDriverName().length() > 10) {
+            textView1.setText(road.getDriverName().substring(0, 9) + "..");
+        } else {
+            textView1.setText(road.getDriverName());
         }
+        textViews.add(textView1);
+
+        TextView textView2 = new TextView(this);
+        textView2.setLayoutParams(params);
+        textView2.setBackgroundColor(Color.WHITE);
+        textView2.setGravity(Gravity.CENTER);
+        textView2.setText(road.getDeparture());
+        textViews.add(textView2);
+
+        TextView textView3 = new TextView(this);
+        textView3.setLayoutParams(params);
+        textView3.setBackgroundColor(Color.WHITE);
+        textView3.setGravity(Gravity.CENTER);
+        textView3.setText(road.getArrival());
+        textViews.add(textView3);
+
+        TextView textView4 = new TextView(this);
+        textView4.setLayoutParams(params);
+        textView4.setBackgroundColor(Color.WHITE);
+        textView4.setGravity(Gravity.CENTER);
+        textView4.setText(road.getDistance().toString());
+        textViews.add(textView4);
+
+        TextView textView5 = new TextView(this);
+        textView5.setLayoutParams(params);
+        textView5.setBackgroundColor(Color.WHITE);
+        textView5.setGravity(Gravity.CENTER);
+        textView5.setText(road.getConsumption().toString());
+        textViews.add(textView5);
+
         return textViews;
     }
 
