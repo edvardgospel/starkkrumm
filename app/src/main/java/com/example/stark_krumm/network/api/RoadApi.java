@@ -16,17 +16,21 @@ public interface RoadApi {
 
     @GET("/starkkrumm/road")
     Call<List<RoadResponse>> getRoads(@Query("date") String date,
-                                      @Query("carNumber") Integer carNumber);
+                                      @Query("carNumber") Integer carNumber,
+                                      @Query("secret") String secret);
 
     @POST("/starkkrumm/road")
-    Call<List<RoadResponse>> saveRoad(@Body RoadRequest roadRequest);
+    Call<List<RoadResponse>> saveRoad(@Body RoadRequest roadRequest,
+                                      @Query("secret") String secret);
 
     @DELETE("/starkkrumm/road")
     Call<List<RoadResponse>> deleteRoad(@Query("date") String date,
                                         @Query("carNumber") Integer carNumber,
-                                        @Query("roadNumber") Integer roadNumber);
+                                        @Query("roadNumber") Integer roadNumber,
+                                        @Query("secret") String secret);
 
     @POST("/starkkrumm/drive/road")
     Call<List<RoadResponse>> uploadRoad(@Query("date") String date,
-                                        @Query("carNumber") Integer carNumber);
+                                        @Query("carNumber") Integer carNumber,
+                                        @Query("secret") String secret);
 }

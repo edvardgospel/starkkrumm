@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
     //// TABLE ////
     private TableLayout table;
 
+    //// SECRET ////
+    private String secret = getString(R.string.secret);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void submitButtonClicked(View view) {
         if (allDataAreFilled()) {
-            roadApi.saveRoad(createRoadRequest()).enqueue(getCallback(submitDot));
+            roadApi.saveRoad(createRoadRequest(), secret).enqueue(getCallback(submitDot));
         } else {
             setVisibility(submitDot, ORANGE);
         }
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if (!roadNumber.isEmpty()) {
             String date = dateDelete.getSelectedItem().toString();
             Integer carNumber = Integer.valueOf(carNumberDelete.getSelectedItem().toString().substring(3, 5));
-            roadApi.deleteRoad(date, carNumber, Integer.valueOf(roadNumber)).enqueue(getCallback(deleteDot));
+            roadApi.deleteRoad(date, carNumber, Integer.valueOf(roadNumber), secret).enqueue(getCallback(deleteDot));
         } else {
             setVisibility(deleteDot, ORANGE);
         }
@@ -133,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
     public void uploadButtonClicked(View view) {
         String date = dateDrive.getSelectedItem().toString();
         Integer carNumber = Integer.valueOf(carNumberDrive.getSelectedItem().toString().substring(3, 5));
-        roadApi.uploadRoad(date, carNumber).enqueue(getCallback(uploadDot));
+        roadApi.uploadRoad(date, carNumber, secret).enqueue(getCallback(uploadDot));
     }
 
     private boolean allDataAreFilled() {
@@ -227,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 if (check++ > 0) {
                     String date = dateDrive.getSelectedItem().toString();
                     Integer carNumber = Integer.valueOf(carNumberDrive.getSelectedItem().toString().substring(3, 5));
-                    roadApi.getRoads(date, carNumber).enqueue(new Callback<List<RoadResponse>>() {
+                    roadApi.getRoads(date, carNumber, secret).enqueue(new Callback<List<RoadResponse>>() {
                         @Override
                         public void onResponse(@NonNull Call<List<RoadResponse>> call, @NonNull Response<List<RoadResponse>> response) {
                             if (response.isSuccessful()) {
