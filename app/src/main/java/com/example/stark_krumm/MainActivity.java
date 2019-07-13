@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout table;
 
     //// SECRET ////
-    private String secret = getString(R.string.secret);
+    private String secret = "secret";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
