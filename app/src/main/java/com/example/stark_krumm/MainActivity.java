@@ -88,10 +88,13 @@ public class MainActivity extends AppCompatActivity {
         check = 0;
         roadNumber = findViewById(R.id.roadNumber);
         carNumber = findViewById(R.id.carNumber);
+        spinnerFocusChangeListener(carNumber);
         driverName = findViewById(R.id.driverName);
+        spinnerFocusChangeListener(driverName);
         departure = findViewById(R.id.departure);
         arrival = findViewById(R.id.arrival);
         date = findViewById(R.id.date);
+        spinnerFocusChangeListener(date);
         distanceBig = findViewById(R.id.distanceBig);
         distanceSmall = findViewById(R.id.distanceSmall);
         consumption1 = findViewById(R.id.consumption1);
@@ -99,11 +102,15 @@ public class MainActivity extends AppCompatActivity {
         consumption3 = findViewById(R.id.consumption3);
 
         dateDelete = findViewById(R.id.dateDelete);
+        spinnerFocusChangeListener(dateDelete);
         carNumberDelete = findViewById(R.id.carNumberDelete);
+        spinnerFocusChangeListener(carNumberDelete);
         roadNumberDelete = findViewById(R.id.roadNumberDelete);
 
         dateDrive = findViewById(R.id.dateDrive);
+        spinnerFocusChangeListener(dateDrive);
         carNumberDrive = findViewById(R.id.carNumberDrive);
+        spinnerFocusChangeListener(carNumberDrive);
 
         submitDot = findViewById(R.id.successSubmit);
         deleteDot = findViewById(R.id.successDelete);
@@ -258,6 +265,18 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    private void spinnerFocusChangeListener(Spinner mSpinner) {
+        mSpinner.setFocusableInTouchMode(true);
+        mSpinner.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                if (mSpinner.getWindowToken() != null) {
+                    mSpinner.performClick();
+                }
+            }
+        });
+
     }
 
     private void clearPreviousDataFromTable() {
